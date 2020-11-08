@@ -69,11 +69,6 @@ class region():
         print('# of Young Adults:', youngadult)
         print('# of Adults:', adult)
         print('# of Elders:', elder)
-        for ppl in self.people:
-            if ppl.obesity is True:
-                t_count += 1
-        print("obese:", t_count)
-
 
         males = 0
         females = 0
@@ -84,6 +79,11 @@ class region():
                 females += 1
         print('Males:',males)
         print('Females:',females)
+
+        for ppl in self.people:
+            if ppl.obesity is True:
+                t_count += 1
+        print("obese:", t_count)
 
         diabetes = 0
         for ppl in self.people:

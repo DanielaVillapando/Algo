@@ -117,3 +117,5 @@ def rand_asthma(age):
     if 65 <= age <= 100:
         if rand_asthma < 0.072:
             return True
+    else:
+        return False
