@@ -2,10 +2,13 @@ import random
 from functions import * 
 
 class Person:
-    def __init__(self, age, sex, obesity, diabetes):
+    def __init__(self, age, sex, obesity, diabetes, asthma, hbp):
         self.age = age
         self.obesity = obesity
         self.sex = sex
+        self.diabetes = diabetes
+        self.asthma = asthma
+        self.hbp = hbp
 
 class Elder(Person):
     def __init__(self):
@@ -13,6 +16,7 @@ class Elder(Person):
         self.obesity = rand_obesity(0.36)  
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
+        self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
 
 class Adult(Person):
@@ -21,6 +25,7 @@ class Adult(Person):
         self.obesity = rand_obesity(0.35)
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
+        self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)        
 
 class YoungAdult(Person):
@@ -29,6 +34,7 @@ class YoungAdult(Person):
         self.obesity = rand_obesity(0.20)
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
+        self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
 
 
@@ -38,6 +44,7 @@ class Kid(Person):
         self.obesity = rand_obesity(0.14)
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
+        self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
 
 
@@ -57,7 +64,7 @@ class region():
         for ppl in self.people:
             if ppl.obesity is True:
                 t_count += 1
-        print(t_count)
+        print("obese:", t_count)
 
 
         males = 0
@@ -81,6 +88,12 @@ class region():
             if ppl.hbp == True:
                 hbp_ppl += 1
         print('Amount of people with hypertension:', hbp_ppl)
+
+        asthma = 0
+        for ppl in self.people:
+            if ppl.asthma == True:
+                asthma += 1
+        print("Can't breathe properly:", asthma )
 
 
 if __name__ == "__main__":

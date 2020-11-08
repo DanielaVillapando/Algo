@@ -98,3 +98,22 @@ def HBP(age):
             return False
     
 
+def rand_asthma(age):
+    rand_asthma = random.random()
+    if 0 <= age <= 11:
+        return False
+    if 12 <= age <= 17:
+        if rand_asthma < 0.08:
+            return True
+    if 18 <= age <= 34:
+        if rand_asthma < 0.109:
+            return True
+    if 35 <= age <= 49:
+        if rand_asthma < 0.078:
+            return True
+    if 50 <= age <= 64:
+        if rand_asthma < 0.055:
+            return True
+    if 65 <= age <= 100:
+        if rand_asthma < 0.072:
+            return True
