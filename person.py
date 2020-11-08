@@ -59,8 +59,16 @@ class region():
     def info(self):
         t_count = 0
         pop = len(self.people)
+        elder = round(0.113 * pop)
+        kid = round(0.224 * pop)
+        youngadult = round(0.260 * pop)
+        adult = round(0.403 * pop)
         print('Info for', self.name)
         print('Population:', pop)
+        print('# of kids:', kid)
+        print('# of Young Adults:', youngadult)
+        print('# of Adults:', adult)
+        print('# of Elders:', elder)
         for ppl in self.people:
             if ppl.obesity is True:
                 t_count += 1
@@ -103,11 +111,35 @@ if __name__ == "__main__":
     i = 0
     k = 0
 
-    while i < 50:
+    population = 5100000
+    elder = round(0.113 * population)
+    kid = round(0.224 * population)
+    youngadult = round(0.260 * population)
+    adult = round(0.403 * population)
+
+    while elder > 0:
         id_numb = str(k)
         id_numb = Elder()
         van.add(id_numb)
-        i += 1
+        elder -= 1
+        k += 1
+    while kid > 0:
+        id_numb = str(k)
+        id_numb = Kid()
+        van.add(id_numb)
+        kid -= 1
+        k += 1
+    while youngadult > 0:
+        id_numb = str(k)
+        id_numb = YoungAdult()
+        van.add(id_numb)
+        youngadult -= 1
+        k += 1
+    while adult > 0:
+        id_numb = str(k)
+        id_numb = Adult()
+        van.add(id_numb)
+        adult -= 1
         k += 1
 
     van.info()
