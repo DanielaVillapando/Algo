@@ -143,8 +143,6 @@ class region():
         unable=0
 
         for ppl in self.people:
-            if ppl.occupation == "Unemployed":
-                unemployed +=1
             if ppl.occupation == "Retail":
                 retail +=1
             if ppl.occupation == "Health Care":
@@ -185,11 +183,17 @@ class region():
                 util += 1
             if ppl.occupation == "Management of Companies": 
                 management +=1
+
             if ppl.occupation == "Unavailable to work":
                 unable += 1
+            if ppl.occupation == "Unemployed":
+                unemployed +=1
 
-            employed = retail + HC + manufacturing + education + PA + science + construction + accom_food + transport + other\
-             + finance + trade + public_services + agriculture + info_industry + entertainment + real_estate + mining + util + management
+        employed = retail + HC + manufacturing + education + PA + science + construction + accom_food + transport + other\
+        + finance + trade + public_services + agriculture + info_industry + entertainment + real_estate + mining + util + management
+        high_risk = retail + education + info_industry + entertainment
+        med_risk = PA + construction + accom_food + transport + trade + public_services + real_estate + management
+        low_risk = manufacturing + science + finance + agriculture + mining + util
 
         print("-" * 20)
         print("Employment Info")
@@ -200,6 +204,11 @@ class region():
         print("Total percentage of population unable to work: {:.2f}% \n".format(unable/self.population * 100))
         print("Amount of people unemployed:", unemployed)
         print("Total percentage of population unemployed: {:.2f}% \n".format(unemployed/self.population * 100))
+
+        print("Amount of people in healthcare:", HC)
+        print("Amount of people in high risk jobs:", high_risk)
+        print("Amount of people in medium risk jobs:", med_risk)
+        print("Amount of people in low risk jobs:", low_risk, "\n")
 
 
 
