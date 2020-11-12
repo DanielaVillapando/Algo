@@ -2,13 +2,14 @@ import random
 from functions import * 
 
 class Person:
-    def __init__(self, age, sex, obesity, diabetes, asthma, hbp):
+    def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation):
         self.age = age
         self.obesity = obesity
         self.sex = sex
         self.diabetes = diabetes
         self.asthma = asthma
         self.hbp = hbp
+        self.occupation = occupation
 
 class Elder(Person):
     def __init__(self):
@@ -18,6 +19,8 @@ class Elder(Person):
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
+
 
 class Adult(Person):
     def __init__(self):
@@ -26,7 +29,8 @@ class Adult(Person):
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
-        self.hbp = HBP(self.age)        
+        self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
 
 class YoungAdult(Person):
     def __init__(self):
@@ -36,6 +40,8 @@ class YoungAdult(Person):
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
+
 
 
 class Kid(Person):
@@ -46,6 +52,7 @@ class Kid(Person):
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
 
 
 class region():
@@ -62,7 +69,9 @@ class region():
         self.people.append(person)
 
     def info(self):
-        print('Info for', self.name, "\n")
+        print("-" * 20)
+        print('Info for', self.name)
+        print("-" * 20)
         print('Population:', self.population)
         print('Number of Kids:', self.kid)
         print('Number of Young Adults:', self.YA)
@@ -77,12 +86,15 @@ class region():
             else:
                 females += 1
         print('Males:',males)
-        print('Females:',females, "\n")
+        print('Females:',females,"\n")
 
         obesity = 0
         for ppl in self.people:
             if ppl.obesity is True:
                 obesity += 1
+        print("-" * 20)
+        print("Illnesses")
+        print("-" * 20)
         print("Amount of people with obesity:", obesity)
         print("Total percentage of population with obesity: {:.2f}% \n".format(obesity/self.population * 100))
 
@@ -106,6 +118,89 @@ class region():
                 asthma += 1
         print("Amount of people with asthma:", asthma )
         print("Total percentage of population with asthma: {:.2f}% \n".format(asthma/self.population * 100))
+        
+        unemployed=0
+        retail=0
+        HC=0
+        manufacturing=0
+        education=0
+        PA=0
+        science=0
+        construction=0
+        accom_food=0
+        transport=0
+        other=0
+        finance=0
+        trade=0
+        public_services=0
+        agriculture=0
+        info_industry=0
+        entertainment=0
+        real_estate=0
+        mining=0
+        util=0
+        management=0
+        unable=0
+
+        for ppl in self.people:
+            if ppl.occupation == "Unemployed":
+                unemployed +=1
+            if ppl.occupation == "Retail":
+                retail +=1
+            if ppl.occupation == "Health Care":
+                HC += 1
+            if ppl.occupation == "Manufacturing":
+                manufacturing +=1
+            if ppl.occupation == "Education":
+                education +=1
+            if ppl.occupation == "Public Administration":
+                PA += 1
+            if ppl.occupation == "Scientific and Technical Services":
+                science += 1
+            if ppl.occupation == "Construction":
+                construction += 1
+            if ppl.occupation == "Accommodation and food services":
+                accom_food +=1
+            if ppl.occupation == "Transportation and Warehousing":
+                transport += 1
+            if ppl.occupation == "Other services":
+                other += 1
+            if ppl.occupation == "Finance and Insurance":
+                finance += 1
+            if ppl.occupation == "Wholesale trade":
+                trade += 1
+            if ppl.occupation == "Public services":
+                public_services += 1
+            if ppl.occupation == "Agriculture, Forestry, and Fishing/Hunting":
+                agriculture +=1
+            if ppl.occupation == "Information and cultural industries":
+                info_industry += 1
+            if ppl.occupation == "Entertainment":
+                entertainment +=1
+            if ppl.occupation == "Real Estate":
+                real_estate += 1
+            if ppl.occupation == "Mining and Oil":
+                mining +=1
+            if ppl.occupation == "Utilities":
+                util += 1
+            if ppl.occupation == "Management of Companies": 
+                management +=1
+            if ppl.occupation == "Unavailable to work":
+                unable += 1
+
+            employed = retail + HC + manufacturing + education + PA + science + construction + accom_food + transport + other\
+             + finance + trade + public_services + agriculture + info_industry + entertainment + real_estate + mining + util + management
+
+        print("-" * 20)
+        print("Employment Info")
+        print("-" * 20)
+        print("Amount of people employed:", employed)
+        print("Total percentage of population employed: {:.2f}% \n".format(employed/self.population * 100))
+        print("Amount of people unable to work:", unable)
+        print("Total percentage of population unable to work: {:.2f}% \n".format(unable/self.population * 100))
+        print("Amount of people unemployed:", unemployed)
+        print("Total percentage of population unemployed: {:.2f}% \n".format(unemployed/self.population * 100))
+
 
 
 if __name__ == "__main__":
