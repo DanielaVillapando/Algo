@@ -7,12 +7,38 @@ def rand_sex():
     else:
         return 'female'
 
-def rand_obesity(percent):
-    rand_ob = random.random()
-    if rand_ob < percent:
-        return True
-    else:
-        return False
+def rand_obesity(age):
+    num = random.random()
+    if 2 <= age <= 18:
+        if num < 0.14:
+            return True
+        else:
+            return False
+    if 18 <= age <= 19:
+        if num < 0.15:
+            return True
+        else:
+            return False
+    if 20 <= age <= 34:
+        if num < 0.18:
+            return True
+        else:
+            return False
+    if 35 <= age <= 49:
+        if num < 0.31:
+            return True
+        else:
+            return False
+    if 50 <= age <= 64:
+        if num < 0.31:
+            return True
+        else:
+            return False
+    if 65 <= age <= 100:
+        if num < 0.33:
+            return True
+        else:
+            return False
 
 def diabetes(sex, age):
     rand_num = random.random()

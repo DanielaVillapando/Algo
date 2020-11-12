@@ -13,7 +13,7 @@ class Person:
 class Elder(Person):
     def __init__(self):
         self.age = random.randint(70, 100)
-        self.obesity = rand_obesity(0.36)  
+        self.obesity = rand_obesity(self.age) 
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
@@ -22,7 +22,7 @@ class Elder(Person):
 class Adult(Person):
     def __init__(self):
         self.age = random.randint(40, 69)
-        self.obesity = rand_obesity(0.35)
+        self.obesity = rand_obesity(self.age) 
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
@@ -31,7 +31,7 @@ class Adult(Person):
 class YoungAdult(Person):
     def __init__(self):
         self.age = random.randint(20, 39)
-        self.obesity = rand_obesity(0.20)
+        self.obesity = rand_obesity(self.age) 
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
@@ -41,7 +41,7 @@ class YoungAdult(Person):
 class Kid(Person):
     def __init__(self):
         self.age = random.randint(0, 19)
-        self.obesity = rand_obesity(0.14)
+        self.obesity = rand_obesity(self.age) 
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
@@ -49,26 +49,25 @@ class Kid(Person):
 
 
 class region():
-    def __init__(self, name):
+    def __init__(self, name, pop, elder, kid, YA, adult):
         self.name = name
+        self.population = pop
+        self.elder = elder
+        self.kid = kid
+        self.YA = YA
+        self.adult = adult
         self.people = []
 
     def add(self, person):
         self.people.append(person)
 
     def info(self):
-        t_count = 0
-        pop = len(self.people)
-        elder = round(0.113 * pop)
-        kid = round(0.224 * pop)
-        youngadult = round(0.260 * pop)
-        adult = round(0.403 * pop)
-        print('Info for', self.name)
-        print('Population:', pop)
-        print('# of kids:', kid)
-        print('# of Young Adults:', youngadult)
-        print('# of Adults:', adult)
-        print('# of Elders:', elder)
+        print('Info for', self.name, "\n")
+        print('Population:', self.population)
+        print('Number of Kids:', self.kid)
+        print('Number of Young Adults:', self.YA)
+        print('Number of Adults:', self.adult)
+        print('Number of Elders:', self.elder, "\n")
 
         males = 0
         females = 0
@@ -78,68 +77,73 @@ class region():
             else:
                 females += 1
         print('Males:',males)
-        print('Females:',females)
+        print('Females:',females, "\n")
 
+        obesity = 0
         for ppl in self.people:
             if ppl.obesity is True:
-                t_count += 1
-        print("obese:", t_count)
+                obesity += 1
+        print("Amount of people with obesity:", obesity)
+        print("Total percentage of population with obesity: {:.2f}% \n".format(obesity/self.population * 100))
 
         diabetes = 0
         for ppl in self.people:
             if ppl.diabetes == True:
                 diabetes += 1
-        print("Fat ass:", diabetes)
+        print("Amount of people with diabetes:", diabetes)
+        print("Total percentage of population with diabetes: {:.2f}% \n".format(diabetes/self.population * 100))
 
         hbp_ppl = 0
         for ppl in self.people:
             if ppl.hbp == True:
                 hbp_ppl += 1
         print('Amount of people with hypertension:', hbp_ppl)
+        print("Total percentage of population with hypertension: {:.2f}% \n".format(hbp_ppl/self.population * 100))
 
         asthma = 0
         for ppl in self.people:
             if ppl.asthma == True:
                 asthma += 1
-        print("Can't breathe properly:", asthma )
+        print("Amount of people with asthma:", asthma )
+        print("Total percentage of population with asthma: {:.2f}% \n".format(asthma/self.population * 100))
 
 
 if __name__ == "__main__":
+    population = 5071000
+    elder = round(0.113 * population)
+    kid = round(0.224 * population)
+    young_adult = round(0.260 * population)
+    adult = round(0.403 * population)
 
-    van = region('Vancouver')
+    BC = region('British Columbia', population, elder, kid, young_adult, adult)
 
     i = 0
     k = 0
 
-    population = 5100000
-    elder = round(0.113 * population)
-    kid = round(0.224 * population)
-    youngadult = round(0.260 * population)
-    adult = round(0.403 * population)
 
     while elder > 0:
         id_numb = str(k)
         id_numb = Elder()
-        van.add(id_numb)
+        BC.add(id_numb)
         elder -= 1
         k += 1
     while kid > 0:
         id_numb = str(k)
         id_numb = Kid()
-        van.add(id_numb)
+        BC.add(id_numb)
         kid -= 1
         k += 1
-    while youngadult > 0:
+    while young_adult > 0:
         id_numb = str(k)
         id_numb = YoungAdult()
-        van.add(id_numb)
-        youngadult -= 1
+        BC.add(id_numb)
+        young_adult -= 1
         k += 1
     while adult > 0:
         id_numb = str(k)
         id_numb = Adult()
-        van.add(id_numb)
+        BC.add(id_numb)
         adult -= 1
         k += 1
 
-    van.info()
+    BC.info()
