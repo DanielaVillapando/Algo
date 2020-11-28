@@ -44,6 +44,8 @@ def get_rating(age, obesity, diabetes, asthma, hbp, occupation):
     
 def rand_obesity(age):
     num = random.random()
+    if age < 2:
+        return False
     if 2 <= age <= 18:
         if num < 0.14:
             return True
@@ -166,20 +168,28 @@ def rand_asthma(age):
     if 12 <= age <= 17:
         if rand_asthma < 0.08:
             return True
+        else:
+            return False
     if 18 <= age <= 34:
         if rand_asthma < 0.109:
             return True
+        else:
+            return False
     if 35 <= age <= 49:
         if rand_asthma < 0.078:
             return True
+        else:
+            return False
     if 50 <= age <= 64:
         if rand_asthma < 0.055:
             return True
+        else:
+            return False
     if 65 <= age <= 100:
         if rand_asthma < 0.072:
             return True
-    else:
-        return False
+        else:
+            return False
 
 
 def rand_occupation(age):
