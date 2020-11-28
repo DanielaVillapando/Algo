@@ -1,10 +1,9 @@
 import random
 from functions import * 
-from operator import itemgetter, attrgetter
 
 
 class Person:
-    def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation):
+    def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation, vaccinated):
         self.age = age
         self.obesity = obesity
         self.sex = sex
@@ -13,6 +12,7 @@ class Person:
         self.hbp = hbp
         self.occupation = occupation
         self.rating = 0
+        self.vaccinated = False
 
 class Elder(Person):
     def __init__(self):
@@ -24,6 +24,7 @@ class Elder(Person):
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
+        self.vaccinated = False
 
 
 class Adult(Person):
@@ -36,6 +37,8 @@ class Adult(Person):
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
+        self.vaccinated = False
+
 
 class YoungAdult(Person):
     def __init__(self):
@@ -47,7 +50,7 @@ class YoungAdult(Person):
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
-
+        self.vaccinated = False
 
 
 class Kid(Person):
@@ -60,6 +63,7 @@ class Kid(Person):
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
+        self.vaccinated = False
 
 
 class region():
@@ -164,30 +168,8 @@ class region():
         print("Amount of people in medium risk jobs:", med_risk)
         print("Amount of people in low risk jobs:", low_risk, "\n")
 
-        vaccine = int(input("How many vaccines do we have? "))
-        sortedlist = sorted(self.people, key=attrgetter('rating'), reverse=True)
-
-        vaccinated_kids = 0
-        vaccinated_young_adults = 0
-        vaccinated_adults = 0
-        vaccinated_elders = 0
-
-        for i in sortedlist:
-            if vaccine !=0:
-                if i.age >= 0 and i.age <= 19:
-                    vaccinated_kids+=1
-                elif i.age >= 20 and i.age <=39:
-                    vaccinated_young_adults+=1
-                elif i.age >= 40 and i.age <= 69:
-                    vaccinated_adults+=1
-                elif i.age >= 70 and i.age <= 100:
-                    vaccinated_elders+=1
-                vaccine-=1
+        distribution(self.people)
         
-        print("Vaccinated Kids:", vaccinated_kids)
-        print("Vaccinated Young Adults:", vaccinated_young_adults)
-        print("Vaccinated Adults:", vaccinated_adults)
-        print("Vaccinated Elders:", vaccinated_elders)
 
 
 if __name__ == "__main__":
