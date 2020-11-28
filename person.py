@@ -1,5 +1,7 @@
 import random
 from functions import * 
+from operator import itemgetter, attrgetter
+
 
 class Person:
     def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation):
@@ -162,10 +164,13 @@ class region():
         print("Amount of people in medium risk jobs:", med_risk)
         print("Amount of people in low risk jobs:", low_risk, "\n")
 
-
+        sortedlist = sorted(self.people, key=attrgetter('rating'), reverse=True)
+        print(sortedlist)
+        print('')
+        print(self.people)
 
 if __name__ == "__main__":
-    population = 5071000
+    population = 50
     elder = round(0.113 * population)
     kid = round(0.224 * population)
     young_adult = round(0.260 * population)
