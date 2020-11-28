@@ -176,44 +176,44 @@ def rand_occupation(age):
             return "Unemployed"
         else:
             if 0 <= num <= 0.115:
-                return "Retail"
+                return "High Risk" # Retail
             if 0.115 < num <= 0.229:
                 return "Health Care"
             if 0.229 < num <= 0.321:
-                return "Manufacturing"
+                return "Low Risk" # Manufacturing
             if 0.321 < num <= 0.396:
-                return "Education"
+                return "High Risk" # Education
             if 0.396 < num <= 0.469:
-                return "Public Administration"
+                return "Medium Risk" # Public administration
             if 0.469 < num <= 0.54:
-                return "Scientific and Technical Services"
+                return "Low Risk" # Scientific and Technical Services
             if 0.54 < num <= 0.606:
-                return "Construction"
+                return "Medium Risk" # Construction
             if 0.606 < num <= 0.668:
-                return "Accommodation and food services"
+                return "Medium Risk" # Accommodation and Food Services
             if 0.668 < num <= 0.716:
-                return "Transportation and Warehousing"
+                return "Medium Risk" # Transportation and Warehousing
             if 0.716 < num <= 0.762:
-                return "Other services"
+                return "Medium Risk" # Other Services
             if 0.762 < num <= 0.807:
-                return "Finance and Insurance"
+                return "Low Risk" # Finance and Insurance
             if 0.807 < num <= 0.849:
-                return "Wholesale trade"
+                return "Medium Risk" # Wholesale trade
             if 0.849 < num <= 0.889:
-                return "Public services"
+                return "Medium Risk" # Public services
             if 0.889 < num <= .913:
-                return "Agriculture, Forestry, and Fishing/Hunting"
+                return "Low Risk" # Agriculture, Forestry, and Fishing/Hunting
             if 0.913 < num <= 0.937:
-                return "Information and cultural industries"
+                return "High Risk" # Information and cultural industries
             if 0.937 < num <= 0.956:
-                return "Entertainment"
+                return "High Risk" # Entertainment
             if 0.956 < num <= 0.975:
-                return "Real Estate"
+                return "Medium Risk" # Real Estate
             if 0.975 < num <= 0.99:
-                return "Mining and Oil"
+                return "Low Risk" # Mining and Oil
             if 0.99 < num <= 0.999:
-                return "Utilities"
+                return "Low Risk" # Utilities
             if 0.999 < num <= 1:
-                return "Management of Companies"
+                return "Medium Risk" # Management of Companies
     else:
         return "Unavailable to work"
