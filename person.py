@@ -147,7 +147,7 @@ class region():
             if ppl.occupation == "Unavailable to work":
                 unable +=1
 
-        employed = high_risk + med_risk + low_risk + HC
+        employed = high_risk + med_risk + low_risk
 
         print("-" * 20)
         print("Employment Info")
