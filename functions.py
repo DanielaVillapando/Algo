@@ -10,22 +10,36 @@ def rand_sex():
 def get_rating(age, obesity, diabetes, asthma, hbp, occupation):
     age_rate = age * 0.25
     if obesity == True:
-        obesity_rate = 1 * 0.15
+        obesity_rate = 15
     else:
         obesity_rate = 0
+
     if diabetes == True:
-        diabetes_rate = 1 * 0.15
+        diabetes_rate = 15
     else:
         diabetes_rate = 0
+
     if asthma == True:
-        asthma_rate = 1 * 0.15
+        asthma_rate = 15
     else:
         asthma_rate = 0
+
     if hbp == True:
-        hbp_rate = 1 * 0.15
+        hbp_rate = 15
     else:
         hbp_rate = 0
-    score = age_rate + obesity_rate + diabetes_rate + asthma_rate + hbp_rate
+
+    if occupation == "High Risk":
+        occupation_rate = 15
+    if occupation == "Medium Risk":
+        occupation_rate = 10
+    if occupation == "Low Risk":
+        occupation_rate = 5
+    if occupation == "Health Care":
+        occupation_rate = 1000
+    if occupation == "Unemployed":
+        occupation_rate = 0
+    score = age_rate + obesity_rate + diabetes_rate + asthma_rate + hbp_rate + occupation_rate
     return score
     
 def rand_obesity(age):
@@ -216,4 +230,4 @@ def rand_occupation(age):
             if 0.999 < num <= 1:
                 return "Medium Risk" # Management of Companies
     else:
-        return "Unavailable to work"
+        return "Unemployed"

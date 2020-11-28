@@ -203,3 +203,6 @@ if __name__ == "__main__":
         k += 1
 
     BC.info()
+
+    x = Elder()
+    print('I am', x.age, 'with a rating of:', x.rating)
