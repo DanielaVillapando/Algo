@@ -164,10 +164,31 @@ class region():
         print("Amount of people in medium risk jobs:", med_risk)
         print("Amount of people in low risk jobs:", low_risk, "\n")
 
+        vaccine = int(input("How many vaccines do we have? "))
         sortedlist = sorted(self.people, key=attrgetter('rating'), reverse=True)
-        print(sortedlist)
-        print('')
-        print(self.people)
+
+        vaccinated_kids = 0
+        vaccinated_young_adults = 0
+        vaccinated_adults = 0
+        vaccinated_elders = 0
+
+        for i in sortedlist:
+            if vaccine !=0:
+                if i.age >= 0 and i.age <= 19:
+                    vaccinated_kids+=1
+                elif i.age >= 20 and i.age <=39:
+                    vaccinated_young_adults+=1
+                elif i.age >= 40 and i.age <= 69:
+                    vaccinated_adults+=1
+                elif i.age >= 70 and i.age <= 100:
+                    vaccinated_elders+=1
+                vaccine-=1
+        
+        print("Vaccinated Kids:", vaccinated_kids)
+        print("Vaccinated Young Adults:", vaccinated_young_adults)
+        print("Vaccinated Adults:", vaccinated_adults)
+        print("Vaccinated Elders:", vaccinated_elders)
+
 
 if __name__ == "__main__":
     population = 50

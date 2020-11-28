@@ -231,3 +231,4 @@ def rand_occupation(age):
                 return "Medium Risk" # Management of Companies
     else:
         return "Unemployed"
+    
