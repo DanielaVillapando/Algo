@@ -7,6 +7,27 @@ def rand_sex():
     else:
         return 'female'
 
+def get_rating(age, obesity, diabetes, asthma, hbp, occupation):
+    age_rate = age * 0.25
+    if obesity == True:
+        obesity_rate = 1 * 0.15
+    else:
+        obesity_rate = 0
+    if diabetes == True:
+        diabetes_rate = 1 * 0.15
+    else:
+        diabetes_rate = 0
+    if asthma == True:
+        asthma_rate = 1 * 0.15
+    else:
+        asthma_rate = 0
+    if hbp == True:
+        hbp_rate = 1 * 0.15
+    else:
+        hbp_rate = 0
+    score = age_rate + obesity_rate + diabetes_rate + asthma_rate + hbp_rate
+    return score
+    
 def rand_obesity(age):
     num = random.random()
     if 2 <= age <= 18:

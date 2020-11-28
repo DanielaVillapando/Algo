@@ -10,6 +10,7 @@ class Person:
         self.asthma = asthma
         self.hbp = hbp
         self.occupation = occupation
+        self.rating = 0
 
 class Elder(Person):
     def __init__(self):
@@ -20,6 +21,7 @@ class Elder(Person):
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
 
 
 class Adult(Person):
@@ -31,6 +33,7 @@ class Adult(Person):
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
 
 class YoungAdult(Person):
     def __init__(self):
@@ -41,18 +44,20 @@ class YoungAdult(Person):
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
 
 
 
 class Kid(Person):
     def __init__(self):
-        self.age = random.randint(0, 19)
+        self.age = random.randint(0, 19) 
         self.obesity = rand_obesity(self.age) 
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
         self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
 
 
 class region():
