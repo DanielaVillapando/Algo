@@ -243,32 +243,38 @@ def rand_occupation(age):
     else:
         return "Unemployed"
     
-def distribution(people):
-    vaccine = int(input("How many vaccines do we have? "))
+def distribution(people, population):
     sortedlist = sorted(people, key=attrgetter('rating'), reverse=True)
-
     vaccinated_kids = 0
     vaccinated_young_adults = 0
     vaccinated_adults = 0
     vaccinated_elders = 0
-
     for i in sortedlist:
-        if vaccine !=0 and i.vaccinated == False:
-            if 0 <= i.age <= 19:
-                vaccinated_kids+=1
-                i.vaccinated = True
-            elif 20 <= i.age <=39:
-                vaccinated_young_adults+=1
-                i.vaccinated = True
-            elif 40 <= i.age <= 69:
-                vaccinated_adults+=1
-                i.vaccinated = True
-            elif 70 <= i.age <= 100:
-                vaccinated_elders+=1
-                i.vaccinated = True
-            vaccine-=1
-    
-    print("Vaccinated Kids:", vaccinated_kids)
-    print("Vaccinated Young Adults:", vaccinated_young_adults)
-    print("Vaccinated Adults:", vaccinated_adults)
-    print("Vaccinated Elders:", vaccinated_elders)
+        if i.vaccinated == False:
+            vaccine = int(input("How many vaccines do we have? "))
+
+            for i in sortedlist:
+                if vaccine !=0 and i.vaccinated == False:
+                    if 0 <= i.age <= 19:
+                        vaccinated_kids+=1
+                        i.vaccinated = True
+                    elif 20 <= i.age <=39:
+                        vaccinated_young_adults+=1
+                        i.vaccinated = True
+                    elif 40 <= i.age <= 69:
+                        vaccinated_adults+=1
+                        i.vaccinated = True
+                    elif 70 <= i.age <= 100:
+                        vaccinated_elders+=1
+                        i.vaccinated = True
+                    vaccine-=1
+            
+            print("Total amount of vaccinated Kids:", vaccinated_kids)
+            print("Total amount of vaccinated Young Adults:", vaccinated_young_adults)
+            print("Total amount of vaccinated Adults:", vaccinated_adults)
+            print("Total amount of vaccinated Elders:", vaccinated_elders)
+            print("Population:", population)
+            print("Total population vaccinated:", vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults)
+            print("Total population not vaccinated,", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
+            print('')
+    print("Congratulations, everyone has been successfully vaccinated!")
