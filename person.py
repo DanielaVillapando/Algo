@@ -120,80 +120,27 @@ class region():
         print("Total percentage of population with asthma: {:.2f}% \n".format(asthma/self.population * 100))
         
         unemployed=0
-        retail=0
-        HC=0
-        manufacturing=0
-        education=0
-        PA=0
-        science=0
-        construction=0
-        accom_food=0
-        transport=0
-        other=0
-        finance=0
-        trade=0
-        public_services=0
-        agriculture=0
-        info_industry=0
-        entertainment=0
-        real_estate=0
-        mining=0
-        util=0
-        management=0
         unable=0
+        HC=0
+        high_risk=0
+        med_risk=0
+        low_risk=0
 
         for ppl in self.people:
-            if ppl.occupation == "Retail":
-                retail +=1
             if ppl.occupation == "Health Care":
                 HC += 1
-            if ppl.occupation == "Manufacturing":
-                manufacturing +=1
-            if ppl.occupation == "Education":
-                education +=1
-            if ppl.occupation == "Public Administration":
-                PA += 1
-            if ppl.occupation == "Scientific and Technical Services":
-                science += 1
-            if ppl.occupation == "Construction":
-                construction += 1
-            if ppl.occupation == "Accommodation and food services":
-                accom_food +=1
-            if ppl.occupation == "Transportation and Warehousing":
-                transport += 1
-            if ppl.occupation == "Other services":
-                other += 1
-            if ppl.occupation == "Finance and Insurance":
-                finance += 1
-            if ppl.occupation == "Wholesale trade":
-                trade += 1
-            if ppl.occupation == "Public services":
-                public_services += 1
-            if ppl.occupation == "Agriculture, Forestry, and Fishing/Hunting":
-                agriculture +=1
-            if ppl.occupation == "Information and cultural industries":
-                info_industry += 1
-            if ppl.occupation == "Entertainment":
-                entertainment +=1
-            if ppl.occupation == "Real Estate":
-                real_estate += 1
-            if ppl.occupation == "Mining and Oil":
-                mining +=1
-            if ppl.occupation == "Utilities":
-                util += 1
-            if ppl.occupation == "Management of Companies": 
-                management +=1
-
-            if ppl.occupation == "Unavailable to work":
-                unable += 1
+            if ppl.occupation == "High Risk":
+                high_risk +=1
+            if ppl.occupation == "Medium Risk":
+                med_risk +=1
+            if ppl.occupation == "Low Risk":
+                low_risk +=1
             if ppl.occupation == "Unemployed":
                 unemployed +=1
+            if ppl.occupation == "Unavailable to work":
+                unable +=1
 
-        employed = retail + HC + manufacturing + education + PA + science + construction + accom_food + transport + other\
-        + finance + trade + public_services + agriculture + info_industry + entertainment + real_estate + mining + util + management
-        high_risk = retail + education + info_industry + entertainment
-        med_risk = PA + construction + accom_food + transport + trade + public_services + real_estate + management
-        low_risk = manufacturing + science + finance + agriculture + mining + util
+        employed = high_risk + med_risk + low_risk
 
         print("-" * 20)
         print("Employment Info")
