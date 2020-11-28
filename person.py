@@ -131,7 +131,6 @@ class region():
         print("Total percentage of population with asthma: {:.2f}% \n".format(asthma/self.population * 100))
         
         unemployed=0
-        unable=0
         HC=0
         high_risk=0
         med_risk=0
@@ -148,8 +147,7 @@ class region():
                 low_risk +=1
             if ppl.occupation == "Unemployed":
                 unemployed +=1
-            if ppl.occupation == "Unavailable to work":
-                unable +=1
+
 
         employed = high_risk + med_risk + low_risk + HC
 
@@ -158,8 +156,7 @@ class region():
         print("-" * 20)
         print("Amount of people employed:", employed)
         print("Total percentage of population employed: {:.2f}% \n".format(employed/self.population * 100))
-        print("Amount of people unable to work:", unable)
-        print("Total percentage of population unable to work: {:.2f}% \n".format(unable/self.population * 100))
+        
         print("Amount of people unemployed:", unemployed)
         print("Total percentage of population unemployed: {:.2f}% \n".format(unemployed/self.population * 100))
 
