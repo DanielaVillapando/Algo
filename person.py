@@ -2,13 +2,15 @@ import random
 from functions import * 
 
 class Person:
-    def __init__(self, age, sex, obesity, diabetes, asthma, hbp):
+    def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation):
         self.age = age
         self.obesity = obesity
         self.sex = sex
         self.diabetes = diabetes
         self.asthma = asthma
         self.hbp = hbp
+        self.occupation = occupation
+        self.rating = 0
 
 class Elder(Person):
     def __init__(self):
@@ -18,6 +20,9 @@ class Elder(Person):
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
+
 
 class Adult(Person):
     def __init__(self):
@@ -26,7 +31,9 @@ class Adult(Person):
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
-        self.hbp = HBP(self.age)        
+        self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
 
 class YoungAdult(Person):
     def __init__(self):
@@ -36,16 +43,21 @@ class YoungAdult(Person):
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
+
 
 
 class Kid(Person):
     def __init__(self):
-        self.age = random.randint(0, 19)
+        self.age = random.randint(0, 19) 
         self.obesity = rand_obesity(self.age) 
         self.sex = rand_sex()
         self.diabetes = diabetes(self.sex, self.age)
         self.asthma = rand_asthma(self.age)
         self.hbp = HBP(self.age)
+        self.occupation = rand_occupation(self.age)
+        self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
 
 
 class region():
@@ -62,7 +74,9 @@ class region():
         self.people.append(person)
 
     def info(self):
-        print('Info for', self.name, "\n")
+        print("-" * 20)
+        print('Info for', self.name)
+        print("-" * 20)
         print('Population:', self.population)
         print('Number of Kids:', self.kid)
         print('Number of Young Adults:', self.YA)
@@ -77,12 +91,15 @@ class region():
             else:
                 females += 1
         print('Males:',males)
-        print('Females:',females, "\n")
+        print('Females:',females,"\n")
 
         obesity = 0
         for ppl in self.people:
             if ppl.obesity is True:
                 obesity += 1
+        print("-" * 20)
+        print("Illnesses")
+        print("-" * 20)
         print("Amount of people with obesity:", obesity)
         print("Total percentage of population with obesity: {:.2f}% \n".format(obesity/self.population * 100))
 
@@ -106,6 +123,45 @@ class region():
                 asthma += 1
         print("Amount of people with asthma:", asthma )
         print("Total percentage of population with asthma: {:.2f}% \n".format(asthma/self.population * 100))
+        
+        unemployed=0
+        unable=0
+        HC=0
+        high_risk=0
+        med_risk=0
+        low_risk=0
+
+        for ppl in self.people:
+            if ppl.occupation == "Health Care":
+                HC += 1
+            if ppl.occupation == "High Risk":
+                high_risk +=1
+            if ppl.occupation == "Medium Risk":
+                med_risk +=1
+            if ppl.occupation == "Low Risk":
+                low_risk +=1
+            if ppl.occupation == "Unemployed":
+                unemployed +=1
+            if ppl.occupation == "Unavailable to work":
+                unable +=1
+
+        employed = high_risk + med_risk + low_risk
+
+        print("-" * 20)
+        print("Employment Info")
+        print("-" * 20)
+        print("Amount of people employed:", employed)
+        print("Total percentage of population employed: {:.2f}% \n".format(employed/self.population * 100))
+        print("Amount of people unable to work:", unable)
+        print("Total percentage of population unable to work: {:.2f}% \n".format(unable/self.population * 100))
+        print("Amount of people unemployed:", unemployed)
+        print("Total percentage of population unemployed: {:.2f}% \n".format(unemployed/self.population * 100))
+
+        print("Amount of people in healthcare:", HC)
+        print("Amount of people in high risk jobs:", high_risk)
+        print("Amount of people in medium risk jobs:", med_risk)
+        print("Amount of people in low risk jobs:", low_risk, "\n")
+
 
 
 if __name__ == "__main__":

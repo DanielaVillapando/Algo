@@ -1,12 +1,33 @@
 import random
 
 def rand_sex():
-    rand_sex = random.randint(1, 2)
-    if rand_sex == 1:
+    rand_sex = random.random()
+    if rand_sex <= 0.496:
         return 'male'
     else:
         return 'female'
 
+def get_rating(age, obesity, diabetes, asthma, hbp, occupation):
+    age_rate = age * 0.25
+    if obesity == True:
+        obesity_rate = 1 * 0.15
+    else:
+        obesity_rate = 0
+    if diabetes == True:
+        diabetes_rate = 1 * 0.15
+    else:
+        diabetes_rate = 0
+    if asthma == True:
+        asthma_rate = 1 * 0.15
+    else:
+        asthma_rate = 0
+    if hbp == True:
+        hbp_rate = 1 * 0.15
+    else:
+        hbp_rate = 0
+    score = age_rate + obesity_rate + diabetes_rate + asthma_rate + hbp_rate
+    return score
+    
 def rand_obesity(age):
     num = random.random()
     if 2 <= age <= 18:
@@ -145,3 +166,54 @@ def rand_asthma(age):
             return True
     else:
         return False
+
+
+def rand_occupation(age):
+    num = random.random()
+    rand_unemployed = random.random()
+    if 16 <= age <= 65:
+        if rand_unemployed <= .089:
+            return "Unemployed"
+        else:
+            if 0 <= num <= 0.115:
+                return "High Risk" # Retail
+            if 0.115 < num <= 0.229:
+                return "Health Care"
+            if 0.229 < num <= 0.321:
+                return "Low Risk" # Manufacturing
+            if 0.321 < num <= 0.396:
+                return "High Risk" # Education
+            if 0.396 < num <= 0.469:
+                return "Medium Risk" # Public administration
+            if 0.469 < num <= 0.54:
+                return "Low Risk" # Scientific and Technical Services
+            if 0.54 < num <= 0.606:
+                return "Medium Risk" # Construction
+            if 0.606 < num <= 0.668:
+                return "Medium Risk" # Accommodation and Food Services
+            if 0.668 < num <= 0.716:
+                return "Medium Risk" # Transportation and Warehousing
+            if 0.716 < num <= 0.762:
+                return "Medium Risk" # Other Services
+            if 0.762 < num <= 0.807:
+                return "Low Risk" # Finance and Insurance
+            if 0.807 < num <= 0.849:
+                return "Medium Risk" # Wholesale trade
+            if 0.849 < num <= 0.889:
+                return "Medium Risk" # Public services
+            if 0.889 < num <= .913:
+                return "Low Risk" # Agriculture, Forestry, and Fishing/Hunting
+            if 0.913 < num <= 0.937:
+                return "High Risk" # Information and cultural industries
+            if 0.937 < num <= 0.956:
+                return "High Risk" # Entertainment
+            if 0.956 < num <= 0.975:
+                return "Medium Risk" # Real Estate
+            if 0.975 < num <= 0.99:
+                return "Low Risk" # Mining and Oil
+            if 0.99 < num <= 0.999:
+                return "Low Risk" # Utilities
+            if 0.999 < num <= 1:
+                return "Medium Risk" # Management of Companies
+    else:
+        return "Unavailable to work"
