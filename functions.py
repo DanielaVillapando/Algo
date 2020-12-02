@@ -251,7 +251,18 @@ def distribution(people, population):
     vaccinated_elders = 0
     for i in sortedlist:
         if i.vaccinated == False:
-            vaccine = int(input("How many vaccines do we have? "))
+            vaccine = input("How many vaccines do we have? or none")
+            if vaccine == "none":                
+                print("Total amount of vaccinated Kids:", vaccinated_kids)
+                print("Total amount of vaccinated Young Adults:", vaccinated_young_adults)
+                print("Total amount of vaccinated Adults:", vaccinated_adults)
+                print("Total amount of vaccinated Elders:", vaccinated_elders)
+                print("Population:", population)
+                print("Total population vaccinated:", vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults)
+                print("Total population not vaccinated:", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
+                print('')
+                break
+            vaccine = int(vaccine)
 
             for i in sortedlist:
                 if vaccine !=0 and i.vaccinated == False:
@@ -277,4 +288,3 @@ def distribution(people, population):
             print("Total population vaccinated:", vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults)
             print("Total population not vaccinated,", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
             print('')
-    print("Congratulations, everyone has been successfully vaccinated!")

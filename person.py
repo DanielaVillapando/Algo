@@ -165,13 +165,12 @@ class region():
         print("Amount of people in medium risk jobs:", med_risk)
         print("Amount of people in low risk jobs:", low_risk, "\n")
 
-    def vaccine_distribution(self):
         distribution(self.people, population)
         
 
 
 if __name__ == "__main__":
-    population = 5071000
+    population = 50
     elder = round(0.113 * population)
     kid = round(0.224 * population)
     young_adult = round(0.260 * population)
@@ -209,7 +208,3 @@ if __name__ == "__main__":
         k += 1
 
     BC.info()
-    BC.vaccine_distribution()
-
-    x = Elder()
-    print('I am', x.age, 'with a rating of:', x.rating)
