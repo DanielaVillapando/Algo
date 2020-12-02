@@ -259,7 +259,7 @@ def distribution(people, population):
                 print("Total amount of vaccinated Elders:", vaccinated_elders)
                 print("Population:", population)
                 print("Total population vaccinated:", vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults)
-                print("Total population not vaccinated,", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
+                print("Total population not vaccinated:", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
                 print('')
                 break
             vaccine = int(vaccine)
