@@ -251,7 +251,7 @@ def distribution(people, population):
     vaccinated_elders = 0
     for i in sortedlist:
         if i.vaccinated == False:
-            vaccine = input("How many vaccines do we have? ")
+            vaccine = input("How many vaccines do we have? or none ")
             if vaccine == "none":                
                 print("Total amount of vaccinated Kids:", vaccinated_kids)
                 print("Total amount of vaccinated Young Adults:", vaccinated_young_adults)
