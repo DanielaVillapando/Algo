@@ -251,7 +251,7 @@ def distribution(people, population):
     vaccinated_elders = 0
     for i in sortedlist:
         if i.vaccinated == False:
-            vaccine = input("How many vaccines do we have? or none")
+            vaccine = input("How many vaccines do we have? ")
             if vaccine == "none":                
                 print("Total amount of vaccinated Kids:", vaccinated_kids)
                 print("Total amount of vaccinated Young Adults:", vaccinated_young_adults)
@@ -259,7 +259,7 @@ def distribution(people, population):
                 print("Total amount of vaccinated Elders:", vaccinated_elders)
                 print("Population:", population)
                 print("Total population vaccinated:", vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults)
-                print("Total population not vaccinated:", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
+                print("Total population not vaccinated,", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
                 print('')
                 break
             vaccine = int(vaccine)
@@ -286,5 +286,19 @@ def distribution(people, population):
             print("Total amount of vaccinated Elders:", vaccinated_elders)
             print("Population:", population)
             print("Total population vaccinated:", vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults)
-            print("Total population not vaccinated,", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
+            print("Total population not vaccinated:", population - (vaccinated_elders + vaccinated_adults + vaccinated_kids + vaccinated_young_adults))
             print('')
+
+    arr = []
+
+    for i in sortedlist:
+        if (i.vaccinated == False):
+            arr.append(False)
+        else:
+            arr.append(True)
+    
+    results = all(arr)
+    if results == True:
+        print('Population Vaccinated')
+    else:
+        print('Not all population Vaccinated')

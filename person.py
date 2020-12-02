@@ -1,7 +1,6 @@
 import random
 from functions import * 
 
-
 class Person:
     def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation, vaccinated):
         self.age = age
