@@ -1,6 +1,9 @@
 import random
 from functions import * 
 
+""" Person Class """
+''' creates a person in our mock population with the various characteristics: age, obesity, sex, diabetes, asthma, high blood pressure, occupation, rating, vacinated '''
+
 class Person:
     def __init__(self, age, sex, obesity, diabetes, asthma, hbp, occupation, vaccinated):
         self.age = age
@@ -12,6 +15,10 @@ class Person:
         self.occupation = occupation
         self.rating = 0
         self.vaccinated = False
+
+""" Age Group Subclasses """
+""" Elder Subclass """
+''' Subclass for person class where age of the person is somewhere between 70 to 100 '''
 
 class Elder(Person):
     def __init__(self):
@@ -25,6 +32,8 @@ class Elder(Person):
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
         self.vaccinated = False
 
+""" Adult Subclass """
+''' Subclass for person class where age of the person is somewhere between 40 to 69 '''
 
 class Adult(Person):
     def __init__(self):
@@ -38,6 +47,8 @@ class Adult(Person):
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
         self.vaccinated = False
 
+""" Young Adult Subclass """
+''' Subclass for person class where age of the person is somewhere between 20 to 39 '''
 
 class YoungAdult(Person):
     def __init__(self):
@@ -51,6 +62,8 @@ class YoungAdult(Person):
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
         self.vaccinated = False
 
+""" Kid Subclass """
+''' Subclass for person class where age of the person is somewhere between 0 to 19 '''
 
 class Kid(Person):
     def __init__(self):
@@ -64,6 +77,10 @@ class Kid(Person):
         self.rating = get_rating(self.age, self.obesity, self.diabetes, self.asthma, self.hbp, self.occupation)
         self.vaccinated = False
 
+""" Region Class """
+''' gives characteristics of the region of our population with a name, population, elder, kid, young adult, adult, elder, and number of people '''
+''' add() function add people to our people list '''
+''' info() function consolidates info from our mock population and prints out results in our console '''
 
 class region():
     def __init__(self, name, pop, elder, kid, YA, adult):
@@ -169,7 +186,9 @@ class region():
 
 
 if __name__ == "__main__":
-    population = 5000000
+    """ vvvv set the number of people in our population here vvvv """
+    population = 5071000
+    """ ^^^^ set the number of people in our population here ^^^^ """
     elder = round(0.113 * population)
     kid = round(0.224 * population)
     young_adult = round(0.260 * population)
