@@ -169,7 +169,7 @@ class region():
 
 
 if __name__ == "__main__":
-    population = 50
+    population = 5000000
     elder = round(0.113 * population)
     kid = round(0.224 * population)
     young_adult = round(0.260 * population)
