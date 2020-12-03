@@ -1,12 +1,22 @@
 import random
 from operator import attrgetter
 
+""" Sex Function """
+''' from our research on StatsCan, BC's population consists of 49.6% Males to 50.6% Females '''
+''' rand_sex() function has an if statement that calculates 49.6% Males or else it will return Female '''
+
 def rand_sex():
     rand_sex = random.random()
     if rand_sex <= 0.496:
         return 'male'
     else:
         return 'female'
+
+""" Get Rating Function """
+''' function to calculate points for our rating system '''
+''' everyone will get points based on their age (age * 0.25) '''
+''' if people in mock population has any of the underlying illnesses (obesity, diabetes, asthma, high blood pressure) they will get 15 points '''
+''' if the person is working they will get points depending on their job's risk level, healthcare workers are guaranteed to get vaccinated, unemployed people get 0 points '''
 
 def get_rating(age, obesity, diabetes, asthma, hbp, occupation):
     age_rate = age * 0.25
@@ -42,7 +52,11 @@ def get_rating(age, obesity, diabetes, asthma, hbp, occupation):
         occupation_rate = 0
     score = age_rate + obesity_rate + diabetes_rate + asthma_rate + hbp_rate + occupation_rate
     return score
-    
+
+""" Obesity Function"""
+''' function that calculates the obesity rate based on age groups, stats from StatsCan '''
+''' EXAMPLE (line 64-68) assigns 14% of people as obese for people between 2 to 18 '''
+
 def rand_obesity(age):
     num = random.random()
     if age < 2:
@@ -77,6 +91,10 @@ def rand_obesity(age):
             return True
         else:
             return False
+
+""" Diabetes Function """
+''' function that calculates people suffering from diabetes based on age groups and sex, stats from StatsCan '''
+''' EXAMPLE (line 111-115) assigns 5% of people as obese for males between 35 to 49 '''
 
 def diabetes(sex, age):
     rand_num = random.random()
@@ -131,6 +149,10 @@ def diabetes(sex, age):
         else:
             return False
 
+""" High Blood Pressure Function """
+''' function that calculates people suffering from high blood pressure based on age groups, stats from StatsCan '''
+''' EXAMPLE (line 170-174) assigns 9.9% of people with high blood pressure for people between 35 to 49 '''
+
 def HBP(age):
     num = random.random()
     if 0 <= age <= 11:
@@ -161,6 +183,9 @@ def HBP(age):
         else:
             return False
     
+""" Asthma Function """
+''' function that calculates people suffering from asthma based on age groups, stats from StatsCan '''
+''' EXAMPLE (line 199-203) assigns 10.9% of people with asthma for people between 18 to 34 '''
 
 def rand_asthma(age):
     rand_asthma = random.random()
@@ -192,6 +217,9 @@ def rand_asthma(age):
         else:
             return False
 
+""" Occupation Function """
+''' function that calculates occupation distribution of job types in BC's job sector, stats from StatsCan '''
+''' assigns High Risk, Medium Risk, and Low Risk based on how risky the job is '''
 
 def rand_occupation(age):
     num = random.random()
@@ -242,7 +270,12 @@ def rand_occupation(age):
                 return "Medium Risk" # Management of Companies
     else:
         return "Unemployed"
-    
+
+""" Distribution Function """
+''' Distributes vaccines based on the points people get in our mock applicaiton '''
+''' people with more points will be given the vaccine first '''
+''' prints out the information regarding the vaccinated population '''
+
 def distribution(people, population):
     sortedlist = sorted(people, key=attrgetter('rating'), reverse=True)
     vaccinated_kids = 0
